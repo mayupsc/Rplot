@@ -46,7 +46,9 @@ plot(x[,1], x[,2], xlim=range(x[,1])*1.5, ylim=range(x[,2])*1.1, col=set2_cols,
 )
 ```
 ## dotplot
+![paper](https://github.com/mayupsc/figures_in_ReadMe/blob/master/dotplot.png)
 ```
+
 p <-ggplot(gsea,aes(pathway,common_name))+
   geom_point(aes(color=-log10(padj),size=size),alpha=1)+
   scale_color_gradient2(low = "#1B9E77", mid = "white",
@@ -65,6 +67,7 @@ p+  scale_size(range = c(2,10))
 ```
 
 ## heatmap
+![paper](https://github.com/mayupsc/figures_in_ReadMe/blob/master/heatmap.png)
 ```
  ggplot(peak_enrich_score_mat_melt,aes(TFs,region))+
   geom_tile(aes(fill=enrichment))+
