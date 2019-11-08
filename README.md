@@ -45,4 +45,30 @@ plot(x[,1], x[,2], xlim=range(x[,1])*1.5, ylim=range(x[,2])*1.1, col=set2_cols,
      ylab=paste0('PC2 (',prop_var[2],'% of Variance)')
 )
 ```
+## dotplot
+```
+p <-ggplot(gsea,aes(pathway,common_name))+
+  geom_point(aes(color=-log10(padj),size=size),alpha=1)+
+  scale_color_gradient2(low = "#1B9E77", mid = "white",
+                        high = "#D95F02", midpoint = -log10(0.05))+
+  theme_bw()+
+  theme(#legend.title = element_text('log2 expression'),
+    axis.text.x = element_text(angle = 90,hjust = 1,size = 12),
+    axis.text.y = element_text(size = 12),
+    axis.title.x =element_text(size=15,face="bold"), 
+    axis.title.y=element_text(size=15,face="bold")
+    
+  )+
+  coord_flip()+
+  ylab('TFs')
+p+  scale_size(range = c(2,10))
+```
 
+## heatmap
+```
+ ggplot(peak_enrich_score_mat_melt,aes(TFs,region))+
+  geom_tile(aes(fill=enrichment))+
+  scale_fill_gradient2(low = muted("navy"), mid = "white",high = muted("firebrick3"), midpoint = 0)+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90,hjust = 1))
+```
